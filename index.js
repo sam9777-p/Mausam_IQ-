@@ -11,6 +11,8 @@ const hazardRoutes=require('./routes/hazard');
 const chatbotRoutes=require('./routes/chatbot');
 const createTables = require('./initDB');
 
+const weatherRoutes = require('./routes/weatherRoutes');
+
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -30,6 +32,7 @@ app.use('/api/',sosRoutes);
 app.use('/api/',modelRoutes);
 app.use('/api/',hazardRoutes);
 app.use('/api',chatbotRoutes);
+app.use('/api/weather', weatherRoutes);
 require('./routes/hazardChatSocket')(io);
 require('./routes/sosSocket')(io);
 
